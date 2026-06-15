@@ -2,24 +2,21 @@ index.html
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SUIT OS</title>
+  <title>JARVIS SUIT OS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>🧥 SUIT OS</h1>
+  <h1>🧥 JARVIS SUIT OS</h1>
+  <p id="status">System Booting...</p>
 
-  <button onclick="startJARVIS()">BOOT SYSTEM</button>
+  <button onclick="boot()">BOOT SYSTEM</button>
 
-  <p id="status">Offline</p>
-
-  <script type="module">
-    import { startListening } from "./voice.js";
-
-    window.startJARVIS = function () {
+  <script>
+    function boot() {
       document.getElementById("status").innerText = "Online";
-      startListening();
+      alert("JARVIS SYSTEM ONLINE");
     }
   </script>
 

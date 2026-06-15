@@ -1,1 +1,27 @@
 index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SUIT OS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>🧥 SUIT OS</h1>
+
+  <button onclick="startJARVIS()">BOOT SYSTEM</button>
+
+  <p id="status">Offline</p>
+
+  <script type="module">
+    import { startListening } from "./voice.js";
+
+    window.startJARVIS = function () {
+      document.getElementById("status").innerText = "Online";
+      startListening();
+    }
+  </script>
+
+</body>
+</html>

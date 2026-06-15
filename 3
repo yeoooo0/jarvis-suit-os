@@ -1,1 +1,32 @@
 voice.js
+import { jarvisBrain } from "./brain.js";
+import { handleAction } from "./actions.js";
+
+export function startListening() {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  const rec = new SpeechRecognition();
+  rec.lang = "en-US";
+
+  rec.start();
+
+  rec.onresult = async (e) => {
+    const text = e.results[0][0].transcript;
+
+    const action = handleAction(text);
+    if (action) return speak(action);
+
+    const res = await jarvisBrain(text);
+    speak(res);
+  };
+
+  rec.onend = () => rec.start();
+}
+
+function speak(text) {
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = 1;
+  u.pitch = 0.8;
+  window.speechSynthesis.speak(u);
+}

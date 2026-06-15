@@ -1,1 +1,14 @@
 brain.js
+import { askGemini } from "./gemini.js";
+
+export async function jarvisBrain(input) {
+  const res = await askGemini(`
+You are JARVIS.
+
+User said: ${input}
+
+Respond short and helpful.
+`);
+
+  return res;
+}

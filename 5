@@ -1,1 +1,11 @@
 actions.js
+export function handleAction(text) {
+  const cmd = text.toLowerCase();
+
+  if (cmd.includes("youtube")) {
+    window.open("https://youtube.com");
+    return "Opening YouTube";
+  }
+
+  return null;
+}
